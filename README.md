@@ -9,44 +9,51 @@ To implement pseudorandom number generation using the standard library in C
 
 ## DESIGN STEPS:
 
-### Step 1
-Include the Necessary Headers
+Step 1: Get the number of random numbers to generate from the user.
 
-### Step 2
-Seed the Random Number Generator.
-Use the srand() function to set the seed.
-### Step 3
-Generate Random Numbers
-Use the rand() function to generate random numbers. This function returns a pseudo-random number in the range of 0 to RAND_MAX.
-### Step 4
-Print the Random Numbers
-Display the generated random numbers.
-### Step 5
-End the Program.  
-Return from the main() function.
+Step 2: Read the minimum and maximum values for the random number range.
+
+Step 3: Initialize the random seed using the current time.
+
+Step 4: Generate a random number by calculating the remainder of division with the range (max - min + 1) and adding the minimum value.
+
+Step 5: Repeat the random number generation for the specified count.
+
+Step 6: Print each generated random number.
+
+Step 7: End the program.
 ## PROGRAM:
 ```
 #include <stdio.h>
-#include <stdlib.h>
-#include <time.h>
+
+#define A 1664525
+#define C 1013904223
+#define M 4294967296 
+
+unsigned int lcg(unsigned int seed) {
+    return (A * seed + C) % M;
+}
 
 int main() {
-    
-    srand(time(NULL));
-    int num_random_numbers = 10;
-    printf("Pseudorandom Numbers:\n");
-    for (int i = 0; i < num_random_numbers; i++) {
-        int random_number = rand();
-        printf("%d\n", random_number);
+    unsigned int seed;
+    int n, i;
+    printf("\n\n\n\n    *****Pseudorandom number generator*****\n\n\n\n");
+    printf("Enter the seed value: ");
+    scanf("%u", &seed);
+    printf("Enter how many random numbers to generate: ");
+    scanf("%d", &n);
+    printf("Random numbers:\n");
+    for (i = 0; i < n; i++) {
+        seed = lcg(seed);
+        printf("%u\n", seed);
     }
-
     return 0;
 }
 ```
-
 ## OUTPUT:
 
-![Screenshot 2024-10-06 200529](https://github.com/user-attachments/assets/32d9e96c-fbe2-4053-bc59-6e4a0160e9a8)
+![Screenshot 2024-10-13 160334](https://github.com/user-attachments/assets/dbfcf5ef-a2ab-4f6b-b44d-d295e28019e4)
+
 
 
 ## RESULT:
