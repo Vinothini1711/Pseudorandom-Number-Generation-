@@ -2,7 +2,7 @@
 # Pseudorandom Number Generation
 It is a process used to generate sequences of numbers that approximate the properties of random numbers.
 
-# AIM:
+## AIM:
 
 To implement pseudorandom number generation using the standard library in C
 
